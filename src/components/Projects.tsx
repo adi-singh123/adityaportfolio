@@ -182,30 +182,33 @@ export const Projects = () => {
       //   }
       // }
     },
-    // {
-    //   title: " Speech Text Reader",
-    //   description: "  Led the creation of a dynamic web tool enabling text-to-speech conversion",
-    //   image: "https://i.postimg.cc/7YnWpBRj/Screenshot-2025-04-06-151022.png",
-    //   tags: ["Html",   "Firebase","Tailwind Css","GitHub","Git"],
-    //   github: "https://github.com/RAKESHKUSHWAHA7518/text.github.io",
-    //   demo: "https://rakeshkushwaha7518.github.io/text-to-voice.github.io",
-    //   details: {
-    //     overview: " Led the creation of a dynamic web tool enabling text-to-speech conversion Leveraged Web Speech API to enrich the user experience with auditory content",
-    //     features: [
-    //     "User Experience Enrichment:",
-    //       "Web Speech API Integration",
-    //       "Dynamic Text-to-Speech Web Tool",
-          
-    //     ],
-    //     techStack: {
-    //       frontend: ["JavaScript","html", "CSS", "Tailwind Css"," Speech Api"],
-    //       backend: [ ],
-    //       deployment: ["GitHub"]
-    //     }
-    //   }
-       
-    // }
-    // ,
+   {
+  title: "Attendance & Task Management System",
+  description: "Developed a full-stack web application for managing user attendance and daily tasks with secure authentication.",
+  image: "/image/attendance.png", // replace with your project screenshot
+  tags: ["React", "Tailwind CSS", "Node.js", "Express", "MongoDB", "JWT", "Render", "Vercel"],
+  github: "https://github.com/adi-singh123/attendance-task", // replace with your repo
+  demo: "https://attendance-task.onrender.com", // your live frontend URL
+  details: {
+    overview:
+      "Designed and developed a full-stack attendance and task management system with JWT-based authentication. The application allows users to mark daily attendance without duplication, create and update tasks, and securely manage their workflow through a clean and responsive UI.",
+    features: [
+      "Secure user authentication using JWT",
+      "Daily attendance marking with duplicate prevention",
+      "Task creation, update, and status management",
+      "Protected routes with role-based access logic",
+      "Responsive and classical UI using Tailwind CSS"
+    ],
+    techStack: {
+      frontend: ["React", "Vite", "Tailwind CSS", "Axios"],
+      backend: ["Node.js", "Express.js", "JWT Authentication"],
+      database: ["MongoDB Atlas"],
+      deployment: ["Vercel (Frontend)", "Render (Backend)"]
+    }
+  }
+}
+
+    ,
     // {
     //   title: "Image Search Engine Copy Right Free",
     //   description: "  Led the creation of a dynamic web tool enabling Image search with Name and copy right free",
