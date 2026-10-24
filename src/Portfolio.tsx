@@ -82,7 +82,7 @@ export default function Portfolio() {
             <a className="button primary" href="#projects">View Projects <ArrowRight /></a>
             <a className="button secondary" href={links.resume} target="_blank" rel="noreferrer"><Download /> Resume</a>
           </div>
-          <div className="hero-stats"><div><strong>3</strong><span>Professional roles</span></div><div><strong>5+</strong><span>Projects built</span></div><div><strong>3</strong><span>Core specialties</span></div></div>
+          <div className="hero-stats"><div><strong>3</strong><span>Professional roles</span></div><div><strong>40+</strong><span>Projects built</span></div><div><strong>3</strong><span>Core specialties</span></div></div>
         </div>
 
         <div className="hero-visual reveal visible">
