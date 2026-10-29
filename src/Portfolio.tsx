@@ -47,26 +47,35 @@ function Heading({ number, children }: { number: string; children: ReactNode }) 
 
 export default function Portfolio() {
   const [open, setOpen] = useState(false);
-  const [dark, setDark] = useState(() => localStorage.getItem('portfolio-theme') === 'dark' || (!localStorage.getItem('portfolio-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches));
+  const [dark, setDark] = useState(false);
+  const [themeReady, setThemeReady] = useState(false);
   useEffect(() => {
+    let storedTheme: string | null = null;
+    try { storedTheme = localStorage.getItem('portfolio-theme'); } catch { /* Storage may be disabled. */ }
+    setDark(storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches));
+    setThemeReady(true);
+  }, []);
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) return;
     const observer = new IntersectionObserver(entries => entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('visible')), { threshold: .12 });
     document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
     return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
+    if (!themeReady) return;
     document.documentElement.classList.toggle('dark', dark);
-    localStorage.setItem('portfolio-theme', dark ? 'dark' : 'light');
-  }, [dark]);
+    try { localStorage.setItem('portfolio-theme', dark ? 'dark' : 'light'); } catch { /* Storage may be disabled. */ }
+  }, [dark, themeReady]);
 
   return <div className="site-shell">
     <header className="topbar">
       <a className="brand" href="#home"><span /> Aditya Singh</a>
       <div className="header-actions">
         <button className="theme-button" onClick={() => setDark(!dark)} aria-label={dark ? 'Use light mode' : 'Use dark mode'}>{dark ? <Sun /> : <Moon />}</button>
-        <button className="menu-button" onClick={() => setOpen(!open)} aria-label="Toggle navigation">{open ? <X /> : <Menu />}</button>
+        <button className="menu-button" onClick={() => setOpen(!open)} aria-label="Toggle navigation" aria-expanded={open} aria-controls="primary-navigation">{open ? <X /> : <Menu />}</button>
       </div>
-      <nav className={open ? 'nav-links open' : 'nav-links'}>
+      <nav id="primary-navigation" aria-label="Main navigation" className={open ? 'nav-links open' : 'nav-links'}>
         {['Skills', 'Experience', 'Projects', 'Education', 'Contact'].map(item => <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setOpen(false)}>{item}</a>)}
       </nav>
     </header>
